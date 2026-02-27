@@ -1,5 +1,6 @@
 package com.example.SecurityPractice.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ public class HomeController {
     public String home() {
         return "Welcome to the home page!";
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/about")
     public String about() {
         return "This is the about page.";
